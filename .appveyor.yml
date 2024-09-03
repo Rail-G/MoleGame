@@ -17,7 +17,7 @@ build_script:
   - npm run prod
 
 test_script:
-  - rom run lint
+  - npm run lint
 
 deploy_script:
   - git config --global credential.helper store
