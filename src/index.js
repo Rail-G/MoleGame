@@ -4,7 +4,8 @@ import './css/style.css'
 const obj = new Game()
 obj.drawBlock()
 obj.npcStart()
-setInterval(() => {
+export const gameState = setInterval(() => {
     obj.entered = true
     obj.npcSteps()
 }, 1000)
+
