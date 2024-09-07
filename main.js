@@ -4,22 +4,30 @@
 /******/ 	var __webpack_require__ = {};
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
 /******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
 /************************************************************************/
+var __webpack_exports__ = {};
 
-// NAMESPACE OBJECT: ./src/index.js
-var src_namespaceObject = {};
-__webpack_require__.r(src_namespaceObject);
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  C: () => (/* binding */ gameState)
+});
 
 ;// CONCATENATED MODULE: ./src/js/points.js
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -45,7 +53,7 @@ var Point = /*#__PURE__*/function () {
     value: function addMissPoint() {
       this.loseScore.textContent = Number(this.loseScore.textContent) + 1;
       if (Number(this.loseScore.textContent) == 5) {
-        clearInterval(src_namespaceObject.gameState);
+        clearInterval(gameState);
         alert('Вы проиграли');
       }
     }
@@ -111,7 +119,7 @@ var Game = /*#__PURE__*/function () {
 var obj = new Game();
 obj.drawBlock();
 obj.npcStart();
-setInterval(function () {
+var gameState = setInterval(function () {
   obj.entered = true;
   obj.npcSteps();
 }, 1000);
