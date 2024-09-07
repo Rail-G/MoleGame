@@ -18,6 +18,7 @@ export default class Game {
                 if (this.entered) {
                     if (e.target.closest('.block').classList.contains('active-block')) {
                         this.points.addPunchPoint()
+                        e.target.closest('.active-block').classList.remove('active-block')
                     } else {
                         this.points.addMissPoint()
                     }
@@ -34,7 +35,9 @@ export default class Game {
     npcSteps() {
         const allBlock = this.gameBlock.querySelectorAll('.block')
         const randomId = Math.floor(Math.random() * allBlock.length)
-        this.gameBlock.querySelector('.active-block').classList.remove('active-block')
+        if (this.gameBlock.querySelector('.active-block')) {
+            this.gameBlock.querySelector('.active-block').classList.remove('active-block')
+        }
         allBlock[randomId].classList.add('active-block')
     }
 }
