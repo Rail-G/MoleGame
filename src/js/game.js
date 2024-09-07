@@ -1,27 +1,29 @@
+import Point from "./points"
+
 export default class Game {
     constructor () {
-        this.gameBlock = document.querySelector('.game-block')
-        this.loseScore = document.querySelector('.lose-score')
-        this.winScore = document.querySelector('.win-score')
-        this.entered = true
+        this.gameBlock = document.querySelector('.game-block');
+        this.entered = true;
+        this.gameState = undefined;
+        this.points = new Point()
     }
 
     drawBlock() {
         for (let i = 0; i < 16; i++) {
             const div = document.createElement('div')
             div.classList.add('block')
-            div.addEventListener('click', () => {
+            this.gameBlock.appendChild(div)
+        }
+        document.querySelector('.game-block').addEventListener('click', (e) => {
                 if (this.entered) {
-                    if (div.classList.contains('active-block')) {
-                        this.winScore.textContent = Number(this.winScore.textContent) + 1
+                    if (e.target.closest('.block').classList.contains('active-block')) {
+                        this.points.addPunchPoint()
                     } else {
-                        this.loseScore.textContent = Number(this.loseScore.textContent) + 1
+                        this.points.addMissPoint()
                     }
                 }
                 this.entered = false
             })
-            this.gameBlock.appendChild(div)
-        }
     }
 
     npcStart() {
