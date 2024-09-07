@@ -89,6 +89,7 @@ var Game = /*#__PURE__*/function () {
         if (_this.entered) {
           if (e.target.closest('.block').classList.contains('active-block')) {
             _this.points.addPunchPoint();
+            e.target.closest('.active-block').classList.remove('active-block');
           } else {
             _this.points.addMissPoint();
           }
@@ -107,7 +108,9 @@ var Game = /*#__PURE__*/function () {
     value: function npcSteps() {
       var allBlock = this.gameBlock.querySelectorAll('.block');
       var randomId = Math.floor(Math.random() * allBlock.length);
-      this.gameBlock.querySelector('.active-block').classList.remove('active-block');
+      if (this.gameBlock.querySelector('.active-block')) {
+        this.gameBlock.querySelector('.active-block').classList.remove('active-block');
+      }
       allBlock[randomId].classList.add('active-block');
     }
   }]);
